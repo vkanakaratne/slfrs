@@ -101,17 +101,20 @@
                             </resources>
 						</configuration>
 					</execution>
-				</executions>
+                    <execution>
+						<id>copy-resources-2</id>
+						<phase>validate</phase>
+						<goals><goal>copy-resources</goal></goals>
     <configuration>
-          <overwrite>true</overwrite>
           <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/</outputDirectory>
           <resources>
             <resource>
               <directory>${project.basedir}/src/main/resources/WEB-INF</directory>
             </resource>
           </resources>
-        </configuration>
-
+        </configuration> 
+</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
