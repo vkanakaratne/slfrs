@@ -33,7 +33,7 @@ var AppConfig = /** @class */ (function () {
         this.currencyFormat = { style: "currency", currency: "USD" };
         this.dateFormat = { year: 'numeric', month: 'short', day: 'numeric' };
         // API Related configs
-        this.apiPort = "9119";
+        this.apiPort = "8080";
         if (this.apiProtocol === undefined) {
             this.apiProtocol = window.location.protocol;
         }
