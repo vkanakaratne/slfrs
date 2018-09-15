@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mrin</groupId>
 	<artifactId>app</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>1.0.0</version>
     <name>Order Processing</name>
 	<properties>
@@ -39,6 +39,11 @@
                 </resources>
             </configuration>
         </plugin>
+ <plugin>
+        <groupId>com.google.appengine</groupId>
+        <artifactId>appengine-maven-plugin</artifactId>
+        <version>1.9.60</version>
+      </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -97,6 +102,16 @@
 						</configuration>
 					</execution>
 				</executions>
+    <configuration>
+          <overwrite>true</overwrite>
+          <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/</outputDirectory>
+          <resources>
+            <resource>
+              <directory>${project.basedir}/src/main/resources/WEB-INF</directory>
+            </resource>
+          </resources>
+        </configuration>
+
 			</plugin>
 
 		</plugins>
@@ -109,7 +124,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
@@ -117,7 +132,7 @@
 		<dependency>
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+		</dependency> -->
 		<!--SpringFox dependencies -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -129,6 +144,18 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${springfox-version}</version>
 		</dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+<dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jul-to-slf4j</artifactId>
+      <scope>provided</scope>
+    </dependency>
 
 		<!-- Manually Added  -->
 		 <dependency>
